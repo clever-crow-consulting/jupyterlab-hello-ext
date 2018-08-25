@@ -1,3 +1,8 @@
+
+import {
+  ICommandPalette
+} from '@jupyterlab/apputils';
+
 import {
   JupyterLab, JupyterLabPlugin
 } from '@jupyterlab/application';
@@ -11,8 +16,10 @@ import '../style/index.css';
 const extension: JupyterLabPlugin<void> = {
   id: 'hellolabext',
   autoStart: true,
-  activate: (app: JupyterLab) => {
+  requires: [ICommandPalette],
+  activate: (app: JupyterLab, palette: ICommandPalette) => {
     console.log('JupyterLab extension hellolabext is activated!');
+    console.log('ICommandPalette:', palette);
   }
 };
 
